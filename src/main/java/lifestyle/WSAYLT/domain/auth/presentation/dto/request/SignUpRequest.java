@@ -13,7 +13,7 @@ import javax.validation.constraints.Pattern;
 public class SignUpRequest {
 
     @NotBlank(message = "닉네임은 공백을 허용하지 않습니다.")
-    @Pattern(regexp="[a-zA-Z1-9]{5,12}", message = "비밀번호는 영어또는 숫자를 포함해 5~12자 이내로 입력해야 합니다.")
+    @Pattern(regexp="[a-zA-Z1-9]{5,12}", message = "닉네임은 영어또는 숫자를 포함해 5~12자 이내로 입력해야 합니다.")
     private String nickname;
 
     @NotBlank(message = "비밀번호는 공백을 허용하지 않습니다.")
