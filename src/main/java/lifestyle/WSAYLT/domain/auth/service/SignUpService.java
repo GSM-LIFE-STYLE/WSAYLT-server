@@ -16,23 +16,16 @@ public class SignUpService {
     private final AuthRepository authRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public void signUp(SignUpRequest signUpRequest) throws Exception {
+    public void signUp(SignUpRequest signUpRequest) {
         if (authRepository.existsByNickname(signUpRequest.getNickname())) {
             throw new ExistNicknameException("이미 존재하는 닉네임입니다.");
         }
 
             User user = User.builder()
                     .nickname(signUpRequest.getNickname())
-                    .password(signUpRequest.getPassword())
+                    .password(passwordEncoder.encode(signUpRequest.getPassword()))
                     .build();
 
-        if(!signUpRequest.getPassword().equals(signUpRequest.getPasswordConfirm())) {
-            throw new NotSamePasswordException("비밀번호가 일치하지 않습니다.");
-        } else {
-            user.encodePassword(passwordEncoder);
             authRepository.save(user);
-
-        }
-
     }
 }
