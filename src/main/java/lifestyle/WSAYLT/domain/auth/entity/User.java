@@ -9,7 +9,6 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import javax.persistence.*;
 
 @Entity
-@Table(name = "user")
 @Getter
 @Builder
 @AllArgsConstructor
