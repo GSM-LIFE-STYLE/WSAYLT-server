@@ -25,7 +25,7 @@ public class SecurityConfig {
                 .and()
                 .authorizeRequests()
 //                .antMatchers("/member/login").permitAll()
-                .antMatchers("/auth/signup").permitAll()
+                .antMatchers("/auth").permitAll()
                 .anyRequest().authenticated();
 
         return http.build();

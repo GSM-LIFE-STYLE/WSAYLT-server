@@ -21,7 +21,7 @@ public class AuthController {
 
     private final SignUpService signUpService;
 
-    @PostMapping("/signup")
+    @PostMapping
     @ApiOperation(value = "회원가입")
     public ResponseEntity<Void> signUp(@RequestBody @Valid SignUpRequest signUpRequest) throws Exception{
         signUpService.signUp(signUpRequest);
