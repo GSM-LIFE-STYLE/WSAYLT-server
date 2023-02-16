@@ -17,7 +17,7 @@ public class SignUpService {
     private final PasswordEncoder passwordEncoder;
 
     public void signUp(SignUpRequest signUpRequest) throws Exception {
-        if (authRepository.findByNickname(signUpRequest.getNickname()).isPresent()) {
+        if (authRepository.existsByNickname(signUpRequest.getNickname())) {
             throw new ExistNicknameException("이미 존재하는 닉네임입니다.");
         }
 
