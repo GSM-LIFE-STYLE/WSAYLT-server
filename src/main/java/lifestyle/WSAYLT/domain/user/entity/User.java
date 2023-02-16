@@ -1,4 +1,4 @@
-package lifestyle.WSAYLT.domain.auth.entity;
+package lifestyle.WSAYLT.domain.user.entity;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
