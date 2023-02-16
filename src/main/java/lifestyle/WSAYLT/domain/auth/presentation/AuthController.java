@@ -23,8 +23,8 @@ public class AuthController {
 
     @PostMapping
     @ApiOperation(value = "회원가입")
-    public ResponseEntity<Void> execute(@RequestBody @Valid SignUpRequest signUpRequest) {
-        signUpService.signUp(signUpRequest);
+    public ResponseEntity<Void> signUp(@RequestBody @Valid SignUpRequest signUpRequest) {
+        signUpService.execute(signUpRequest);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 }
