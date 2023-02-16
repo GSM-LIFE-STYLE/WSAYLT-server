@@ -1,1 +1,10 @@
+spring:
+  datasource:
+    driver-class-name: org.mariadb.jdbc.Driver
+    username: ${DB_USER}
+    url: ${DB_URL}
+    password: ${DB_PASSWORD}
 
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
