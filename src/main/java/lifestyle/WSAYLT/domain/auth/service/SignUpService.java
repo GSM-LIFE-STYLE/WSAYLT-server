@@ -1,8 +1,7 @@
 package lifestyle.WSAYLT.domain.auth.service;
 
-import lifestyle.WSAYLT.domain.auth.entity.User;
+import lifestyle.WSAYLT.domain.user.entity.User;
 import lifestyle.WSAYLT.domain.auth.exception.ExistNicknameException;
-import lifestyle.WSAYLT.domain.auth.exception.NotSamePasswordException;
 import lifestyle.WSAYLT.domain.auth.presentation.dto.request.SignUpRequest;
 import lifestyle.WSAYLT.domain.auth.repository.AuthRepository;
 import lombok.RequiredArgsConstructor;
