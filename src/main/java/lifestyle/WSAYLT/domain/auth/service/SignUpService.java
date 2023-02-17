@@ -23,6 +23,7 @@ public class SignUpService {
         }
 
         User user = User.builder()
+                .name(signUpRequest.getName())
                 .nickname(signUpRequest.getNickname())
                 .password(passwordEncoder.encode(signUpRequest.getPassword()))
                 .build();
