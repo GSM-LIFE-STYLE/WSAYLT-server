@@ -34,9 +34,9 @@ public class LoginService {
 
         String accessToken = tokenProvider.generatedAccessToken(loginRequest.getNickname());
         String refreshToken = tokenProvider.generatedRefreshToken(loginRequest.getNickname());
-        RefreshToken entityRedis = new RefreshToken(loginRequest.getNickname(), refreshToken,tokenProvider.getREFRESH_TOKEN_EXPIRE_TIME());
+        RefreshToken refreshTokenEntity = new RefreshToken(loginRequest.getNickname(), refreshToken,tokenProvider.getREFRESH_TOKEN_EXPIRE_TIME());
 
-        refreshTokenRepository.save(entityRedis);
+        refreshTokenRepository.save(refreshTokenEntity);
 
         return LoginResponse.builder()
                 .accessToken(accessToken)
