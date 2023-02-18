@@ -8,7 +8,7 @@ import lombok.NoArgsConstructor;
 @Getter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BoardRequestDto {
+public class BoardRequest {
 
     private String title;
     private String url;

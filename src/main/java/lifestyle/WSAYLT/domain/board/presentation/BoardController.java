@@ -1,7 +1,7 @@
 package lifestyle.WSAYLT.domain.board.presentation;
 
 
-import lifestyle.WSAYLT.domain.board.presentation.dto.request.BoardRequestDto;
+import lifestyle.WSAYLT.domain.board.presentation.dto.request.BoardRequest;
 import lifestyle.WSAYLT.domain.board.service.WriteBoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -17,7 +17,7 @@ public class BoardController {
     private final WriteBoardService writeBoardService;
 
     @PostMapping
-    public void write(@RequestBody BoardRequestDto boardRequestDto){
-        writeBoardService.execute(boardRequestDto);
+    public void write(@RequestBody BoardRequest boardRequest){
+        writeBoardService.execute(boardRequest);
     }
 }
