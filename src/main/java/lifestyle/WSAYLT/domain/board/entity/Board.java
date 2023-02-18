@@ -1,6 +1,7 @@
 package lifestyle.WSAYLT.domain.board.entity;
 
 
+ import lifestyle.WSAYLT.domain.user.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -25,6 +26,10 @@ public class Board {
 
     @Column(name = "music_url",nullable = false)
     private String musicUrl;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
 
 
 }
