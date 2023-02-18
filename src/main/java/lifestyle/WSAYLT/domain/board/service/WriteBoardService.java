@@ -18,7 +18,7 @@ public class WriteBoardService {
     public void execute(BoardRequest boardRequest){
         Board board = Board.builder()
                 .title(boardRequest.getTitle())
-                .url(boardRequest.getUrl())
+                .musicUrl(boardRequest.getMusicUrl())
                 .build();
         boardRepository.save(board);
     }

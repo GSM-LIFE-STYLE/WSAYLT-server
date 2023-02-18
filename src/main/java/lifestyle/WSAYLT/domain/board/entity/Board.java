@@ -1,7 +1,6 @@
 package lifestyle.WSAYLT.domain.board.entity;
 
 
-import lifestyle.WSAYLT.domain.user.entity.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -24,8 +23,8 @@ public class Board {
     @Column(name = "title", nullable = false)
     private String title;
 
-    @Column(name = "url",nullable = false)
-    private String url;
+    @Column(name = "music_url",nullable = false)
+    private String musicUrl;
 
 
 }
