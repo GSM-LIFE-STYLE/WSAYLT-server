@@ -33,12 +33,14 @@ public class AuthController {
     }
 
     @PostMapping("/login")
+    @ApiOperation(value = "로그인")
     public ResponseEntity<LoginResponse> login(@RequestBody @Valid LoginRequest loginRequest) {
         LoginResponse loginResponse = loginService.execute(loginRequest);
         return ResponseEntity.ok(loginResponse);
     }
 
     @PatchMapping
+    @ApiOperation(value = "토큰 재발급")
     public ResponseEntity<NewTokenResponse> reIssueToken(@RequestHeader("RefreshToken") String token) {
         NewTokenResponse reIssueToken = tokenReissueService.execute(token);
         return ResponseEntity.ok(reIssueToken);
