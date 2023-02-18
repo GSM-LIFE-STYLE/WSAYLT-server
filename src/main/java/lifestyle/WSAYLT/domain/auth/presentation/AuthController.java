@@ -4,8 +4,10 @@ import io.swagger.annotations.ApiOperation;
 import lifestyle.WSAYLT.domain.auth.presentation.dto.request.LoginRequest;
 import lifestyle.WSAYLT.domain.auth.presentation.dto.request.SignUpRequest;
 import lifestyle.WSAYLT.domain.auth.presentation.dto.response.LoginResponse;
+import lifestyle.WSAYLT.domain.auth.presentation.dto.response.NewTokenResponse;
 import lifestyle.WSAYLT.domain.auth.service.LoginService;
 import lifestyle.WSAYLT.domain.auth.service.SignUpService;
+import lifestyle.WSAYLT.domain.auth.service.TokenReissueService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -21,6 +23,7 @@ public class AuthController {
 
     private final SignUpService signUpService;
     private final LoginService loginService;
+    private final TokenReissueService tokenReissueService;
 
     @PostMapping
     @ApiOperation(value = "회원가입")
@@ -30,8 +33,16 @@ public class AuthController {
     }
 
     @PostMapping("/login")
+    @ApiOperation(value = "로그인")
     public ResponseEntity<LoginResponse> login(@RequestBody @Valid LoginRequest loginRequest) {
         LoginResponse loginResponse = loginService.execute(loginRequest);
         return ResponseEntity.ok(loginResponse);
+    }
+
+    @PatchMapping
+    @ApiOperation(value = "토큰 재발급")
+    public ResponseEntity<NewTokenResponse> reIssueToken(@RequestHeader("RefreshToken") String token) {
+        NewTokenResponse reIssueToken = tokenReissueService.execute(token);
+        return ResponseEntity.ok(reIssueToken);
     }
 }

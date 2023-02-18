@@ -38,7 +38,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
                 throw new TokenNotValidException("토큰이 유효하지 않습니다.");
             }
 
-            String email = tokenProvider.getUserEmail(accessToken, jwtProperties.getAccessSecret());
+            String email = tokenProvider.getUserNickname(accessToken, jwtProperties.getAccessSecret());
             registerSecurityContext(request, email);
         }
         filterChain.doFilter(request, response);
