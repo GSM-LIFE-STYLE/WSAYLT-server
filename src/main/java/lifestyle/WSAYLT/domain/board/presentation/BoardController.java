@@ -9,6 +9,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.validation.Valid;
+
 @RestController
 @RequiredArgsConstructor
 @RequestMapping("/board")
@@ -17,7 +19,7 @@ public class BoardController {
     private final WriteBoardService writeBoardService;
 
     @PostMapping
-    public void write(@RequestBody BoardRequest boardRequest){
+    public void write(@RequestBody @Valid BoardRequest boardRequest){
         writeBoardService.execute(boardRequest);
     }
 }
