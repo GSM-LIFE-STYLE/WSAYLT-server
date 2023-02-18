@@ -25,16 +25,16 @@ public class TokenReissueService {
 
     @Transactional(rollbackFor = Exception.class)
     public NewTokenResponse execute(String reqToken){
-        String email = tokenProvider.getUserEmail(reqToken,jwtProperties.getRefreshSecret());
-        RefreshToken token = refreshTokenRepository.findById(email)
+        String nickname = tokenProvider.getUserNickname(reqToken,jwtProperties.getRefreshSecret());
+        RefreshToken token = refreshTokenRepository.findById(nickname)
                 .orElseThrow(()->new RefreshTokenNotFoundException("존재하지 않은 refreshToken 입니다."));
 
         if(!token.getRefreshToken().equals(reqToken)){
             throw new TokenNotValidException("토큰이 유효하지 않습니다.");
         }
 
-        String accessToken = tokenProvider.generatedAccessToken(email);
-        String refreshToken = tokenProvider.generatedRefreshToken(email);
+        String accessToken = tokenProvider.generatedAccessToken(nickname);
+        String refreshToken = tokenProvider.generatedRefreshToken(nickname);
         ZonedDateTime expiredAt = tokenProvider.getExpiredAtToken(accessToken, jwtProperties.getAccessSecret());
         token.exchangeRefreshToken(refreshToken);
         refreshTokenRepository.save(token);
