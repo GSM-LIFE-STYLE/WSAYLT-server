@@ -22,7 +22,7 @@ public class ChangePasswordService {
     }
 
     private void checkPassword(String currentPassword, String newPassword) {
-        if(currentPassword.equals(newPassword))
+        if(!currentPassword.equals(newPassword))
             throw new NotSamePasswordException("비밀번호가 일치하지 않습니다");
     }
 }
