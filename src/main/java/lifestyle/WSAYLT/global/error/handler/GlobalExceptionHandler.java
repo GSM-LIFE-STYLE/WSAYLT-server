@@ -1,6 +1,8 @@
 package lifestyle.WSAYLT.global.error.handler;
 
 import lifestyle.WSAYLT.domain.auth.exception.*;
+import lifestyle.WSAYLT.domain.board.exception.AlreadyInsertHeartException;
+import lifestyle.WSAYLT.domain.board.exception.BoardNotFoundException;
 import lifestyle.WSAYLT.global.error.ErrorMessage;
 import lifestyle.WSAYLT.global.security.exception.TokenExpirationException;
 import lifestyle.WSAYLT.global.security.exception.TokenNotValidException;
@@ -65,6 +67,20 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorMessage, HttpStatus.valueOf(e.getErrorCode().getStatus()));
     }
 
+    @ExceptionHandler(AlreadyInsertHeartException.class)
+    public ResponseEntity<ErrorMessage> handleAlreadyInsertHeartException(HttpServletRequest request , AlreadyInsertHeartException e) {
+        printError(request, e, e.getErrorCode().getMessage());
+        ErrorMessage errorMessage = new ErrorMessage(e.getErrorCode().getMessage(), e.getErrorCode().getStatus());
+        return new ResponseEntity<>(errorMessage, HttpStatus.valueOf(e.getErrorCode().getStatus()));
+    }
+
+
+    @ExceptionHandler(BoardNotFoundException.class)
+    public ResponseEntity<ErrorMessage> handleBoardNotFoundException(HttpServletRequest request , BoardNotFoundException e) {
+        printError(request, e, e.getErrorCode().getMessage());
+        ErrorMessage errorMessage = new ErrorMessage(e.getErrorCode().getMessage(), e.getErrorCode().getStatus());
+        return new ResponseEntity<>(errorMessage, HttpStatus.valueOf(e.getErrorCode().getStatus()));
+    }
     private void printError(HttpServletRequest request, RuntimeException ex, String message) {
         log.error(request.getRequestURI());
         log.error(message);
