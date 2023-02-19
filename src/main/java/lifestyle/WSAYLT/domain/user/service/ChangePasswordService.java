@@ -16,12 +16,13 @@ public class ChangePasswordService {
 
     public void changePassword(ChangePasswordRequest request) {
         User user = userUtil.currentUser();
-        checkPassword(user.getPassword(), request.getPassword());
-        user.updatePassword(request.getPassword());
+        String newPassword = passwordEncoder.encode(request.getPassword());
+        checkPassword(user.getPassword(), newPassword);
+        user.updatePassword(newPassword);
     }
 
-    private void checkPassword(String currentPassword, String password) {
-        if(currentPassword.equals(passwordEncoder.encode(password)))
+    private void checkPassword(String currentPassword, String newPassword) {
+        if(currentPassword.equals(newPassword))
             throw new NotSamePasswordException("비밀번호가 일치하지 않습니다");
     }
 }
