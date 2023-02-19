@@ -65,6 +65,13 @@ public class GlobalExceptionHandler {
         return new ResponseEntity<>(errorMessage, HttpStatus.valueOf(e.getErrorCode().getStatus()));
     }
 
+    @ExceptionHandler(BlackListAlreadyExistException.class)
+    public ResponseEntity<ErrorMessage> handleBlackListAlreadyExistException(HttpServletRequest request , BlackListAlreadyExistException e) {
+        printError(request, e, e.getErrorCode().getMessage());
+        ErrorMessage errorMessage = new ErrorMessage(e.getErrorCode().getMessage(), e.getErrorCode().getStatus());
+        return new ResponseEntity<>(errorMessage, HttpStatus.valueOf(e.getErrorCode().getStatus()));
+    }
+
     private void printError(HttpServletRequest request, RuntimeException ex, String message) {
         log.error(request.getRequestURI());
         log.error(message);
