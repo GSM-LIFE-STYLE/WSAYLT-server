@@ -1,13 +1,16 @@
 package lifestyle.WSAYLT.domain.user.presentation.dto.request;
 
+import lombok.AllArgsConstructor;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Pattern;
 
 @Getter
-@RequiredArgsConstructor
+@NoArgsConstructor
+@AllArgsConstructor
 public class ChangePasswordRequest {
     @NotBlank(message = "기존 비밀번호를 입력해야 합니다")
     private String password;
