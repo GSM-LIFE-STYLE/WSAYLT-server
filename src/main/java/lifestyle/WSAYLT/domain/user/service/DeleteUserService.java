@@ -18,7 +18,7 @@ public class DeleteUserService {
     private final UserRepository userRepository;
 
     @Transactional(rollbackFor = Exception.class)
-    public void deleteUser(DeleteUserRequest deleteUserRequest) {
+    public void withdrawUser(DeleteUserRequest deleteUserRequest) {
         User user = userUtil.currentUser();
         if(!user.getPassword().equals(passwordEncoder.encode(deleteUserRequest.getPassword())))
             throw new MisMatchPasswordException("비밀번호가 일치하지 않습니다");
