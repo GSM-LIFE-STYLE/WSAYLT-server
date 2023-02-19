@@ -77,7 +77,7 @@ public class TokenProvider {
         return ZonedDateTime.now().plusSeconds(ACCESS_TOKEN_EXPIRE_TIME);
     }
 
-    public String getUserEmail(String token, String secret) {
+    public String getUserNickname(String token, String secret) {
         return extractAllClaims(token, secret).get(TokenClaimName.USER_NICKNAME.value, String.class);
     }
 
