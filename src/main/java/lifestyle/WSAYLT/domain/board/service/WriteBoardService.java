@@ -24,6 +24,7 @@ public class WriteBoardService {
                 .title(boardRequest.getTitle())
                 .musicUrl(boardRequest.getMusicUrl())
                 .user(user)
+                .heartCount(0)
                 .build();
         boardRepository.save(board);
     }
