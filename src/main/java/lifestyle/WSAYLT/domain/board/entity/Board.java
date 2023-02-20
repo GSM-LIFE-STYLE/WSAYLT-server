@@ -2,16 +2,14 @@ package lifestyle.WSAYLT.domain.board.entity;
 
 
  import lifestyle.WSAYLT.domain.user.entity.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+ import lombok.*;
  import org.hibernate.annotations.ColumnDefault;
 
  import javax.persistence.*;
 
 @Entity
 @Getter
+@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
@@ -36,5 +34,8 @@ public class Board {
     @JoinColumn(name = "user_id")
     private User user;
 
+    public void updateHeart(Integer heartCount){
+        this.heartCount = heartCount;
+    }
 
 }
