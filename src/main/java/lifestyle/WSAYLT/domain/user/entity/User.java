@@ -29,9 +29,6 @@ public class User {
     @Column(name = "password")
     private String password;
 
-    @Builder.Default
-    @OneToMany(mappedBy = "user")
-    private List<Board> heartBoard;
 
     public void encodePassword(PasswordEncoder passwordEncoder){
         this.password = passwordEncoder.encode(password);
