@@ -25,7 +25,7 @@ public class BoardController {
     }
 
     @PostMapping("/{boardId}/like")
-    public ResponseEntity<Void> insert(@PathVariable("boardId") Long boardId, @RequestBody HeartRequest heartRequest){
+    public ResponseEntity<Void> insert(@PathVariable("boardId") Long boardId, @RequestBody @Valid HeartRequest heartRequest){
         heartInsertService.execute(boardId,heartRequest);
         return ResponseEntity.ok().build();
     }
