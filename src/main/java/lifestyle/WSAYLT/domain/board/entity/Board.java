@@ -9,7 +9,6 @@ package lifestyle.WSAYLT.domain.board.entity;
 
 @Entity
 @Getter
-@Setter
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
