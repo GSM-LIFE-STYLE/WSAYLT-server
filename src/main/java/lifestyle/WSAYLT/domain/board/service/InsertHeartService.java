@@ -34,18 +34,16 @@ import org.springframework.transaction.annotation.Transactional;
                 .orElseThrow(() -> new BoardNotFoundException("게시글이 존재하지 않습니다"));
 
         if(heartRepository.existsHeartByUserAndBoard(user,board)){
-            board.updateHeart(board.getHeartCount()-1);
-            boardRepository.save(board);
-            heartRepository.deleteHeartByUserAndBoard(user,board);
-        }else{
-            Heart heart = Heart.builder()
-                    .user(user)
-                    .board(board)
-                    .build();
-
-            board.updateHeart(board.getHeartCount()+1);
-            heartRepository.save(heart);
-            boardRepository.save(board);
+            throw new AlreadyInsertHeartException("이미 좋아요를 누르셨습니다.");
         }
+        Heart heart = Heart.builder()
+                .user(user)
+                .board(board)
+                .build();
+
+        board.updateHeart(board.getHeartCount()+1);
+        heartRepository.save(heart);
+        boardRepository.save(board);
+
     }
 }
