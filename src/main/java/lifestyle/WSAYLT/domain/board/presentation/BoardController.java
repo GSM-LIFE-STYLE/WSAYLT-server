@@ -3,7 +3,7 @@ package lifestyle.WSAYLT.domain.board.presentation;
 
 import lifestyle.WSAYLT.domain.board.presentation.dto.request.BoardRequest;
 import lifestyle.WSAYLT.domain.board.presentation.dto.request.HeartRequest;
-import lifestyle.WSAYLT.domain.board.service.HeartInsertService;
+import lifestyle.WSAYLT.domain.board.service.InsertHeartService;
 import lifestyle.WSAYLT.domain.board.service.WriteBoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -17,7 +17,7 @@ import javax.validation.Valid;
 public class BoardController {
 
     private final WriteBoardService writeBoardService;
-    private final HeartInsertService heartInsertService;
+    private final InsertHeartService heartInsertService;
 
     @PostMapping
     public void write(@RequestBody @Valid BoardRequest boardRequest){
