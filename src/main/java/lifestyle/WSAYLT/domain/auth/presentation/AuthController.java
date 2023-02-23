@@ -6,6 +6,7 @@ import lifestyle.WSAYLT.domain.auth.presentation.dto.request.SignUpRequest;
 import lifestyle.WSAYLT.domain.auth.presentation.dto.response.LoginResponse;
 import lifestyle.WSAYLT.domain.auth.presentation.dto.response.NewTokenResponse;
 import lifestyle.WSAYLT.domain.auth.service.LoginService;
+import lifestyle.WSAYLT.domain.auth.service.LogoutService;
 import lifestyle.WSAYLT.domain.auth.service.SignUpService;
 import lifestyle.WSAYLT.domain.auth.service.TokenReissueService;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ public class AuthController {
     private final SignUpService signUpService;
     private final LoginService loginService;
     private final TokenReissueService tokenReissueService;
+    private final LogoutService logoutService;
 
     @PostMapping
     @ApiOperation(value = "회원가입")
@@ -37,6 +39,14 @@ public class AuthController {
     public ResponseEntity<LoginResponse> login(@RequestBody @Valid LoginRequest loginRequest) {
         LoginResponse loginResponse = loginService.execute(loginRequest);
         return ResponseEntity.ok(loginResponse);
+    }
+
+    @DeleteMapping
+    @ApiOperation(value = "로그아웃")
+    public ResponseEntity<Void> logout(@RequestHeader("Authorization")String accessToken){
+        logoutService.execute(accessToken);
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
+
     }
 
     @PatchMapping

@@ -17,6 +17,7 @@ public class RefreshToken {
 
     @Id
     private String nickname;
+
     @Indexed
     private String refreshToken;
 
