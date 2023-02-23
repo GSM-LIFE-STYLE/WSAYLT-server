@@ -27,11 +27,11 @@ public class InsertHeartService {
 
 
     @Transactional
-    public void execute(Long boardId, HeartRequest heartRequest){
+    public void execute(Long id, HeartRequest heartRequest){
         User user = userRepository.findByNickname(heartRequest.getNickname())
                 .orElseThrow(() -> new UserNotFoundException("존재하지 않는 유저입니다"));
 
-        Board board = boardRepository.findById(boardId)
+        Board board = boardRepository.findById(id)
                 .orElseThrow(() -> new BoardNotFoundException("게시글이 존재하지 않습니다"));
 
         if(heartRepository.existsByUserAndBoard(user,board)){
