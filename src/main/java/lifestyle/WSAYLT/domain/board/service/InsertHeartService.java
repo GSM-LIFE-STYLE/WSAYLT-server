@@ -17,7 +17,8 @@ import org.springframework.transaction.annotation.Transactional;
 
 
 @Service
-@RequiredArgsConstructor public class InsertHeartService {
+@RequiredArgsConstructor
+public class InsertHeartService {
 
     private final UserRepository userRepository;
     private final BoardRepository boardRepository;
