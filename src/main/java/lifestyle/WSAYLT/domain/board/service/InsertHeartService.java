@@ -5,11 +5,11 @@ import lifestyle.WSAYLT.domain.board.entity.Board;
 import lifestyle.WSAYLT.domain.board.entity.Heart;
 import lifestyle.WSAYLT.domain.board.exception.AlreadyInsertHeartException;
 import lifestyle.WSAYLT.domain.board.exception.BoardNotFoundException;
-import lifestyle.WSAYLT.domain.board.presentation.dto.request.HeartRequest;
 import lifestyle.WSAYLT.domain.board.repository.BoardRepository;
 import lifestyle.WSAYLT.domain.board.repository.HeartRepository;
 import lifestyle.WSAYLT.domain.user.entity.User;
 import lifestyle.WSAYLT.domain.user.repository.UserRepository;
+import lifestyle.WSAYLT.global.util.UserUtil;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -24,13 +24,13 @@ public class InsertHeartService {
     private final BoardRepository boardRepository;
     private final HeartRepository heartRepository;
 
+    private final UserUtil userUtil;
+
 
 
     @Transactional
-    public void execute(Long id, HeartRequest heartRequest){
-        User user = userRepository.findByNickname(heartRequest.getNickname())
-                .orElseThrow(() -> new UserNotFoundException("존재하지 않는 유저입니다"));
-
+    public void execute(Long id){
+        User user = userUtil.currentUser();
         Board board = boardRepository.findById(id)
                 .orElseThrow(() -> new BoardNotFoundException("게시글이 존재하지 않습니다"));
 
