@@ -12,8 +12,11 @@ public enum ErrorCode {
     TOKEN_IS_EXPIRED("토큰이 만료 되었습니다.", 401),
     TOKEN_NOT_VALID("토큰이 유효 하지 않습니다.", 401),
     MISMATCH_MEMBER_PASSWORD("비밀번호가 일치하지 않습니다.", 400),
-    REFRESH_TOKEN_NOT_FOUND("존재하지 않는 리프레시 토큰입니다.", 404);
+    REFRESH_TOKEN_NOT_FOUND("존재하지 않는 리프레시 토큰입니다.", 404),
 
+    BOARD_NOT_FOUND("게시글이 존재하지 않습니다",404),
+    ALREADY_INSERT_HEART("이미 좋아요를 누르셨습니다",400)
+    ;
 
     private final String message;
     private final int status;
