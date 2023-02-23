@@ -6,5 +6,5 @@ import lifestyle.WSAYLT.domain.user.entity.User;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 public interface HeartRepository extends JpaRepository<Heart, Long> {
-    boolean existsHeartByUserAndBoard(User user, Board board);
+    boolean existsByUserAndBoard(User user, Board board);
 }

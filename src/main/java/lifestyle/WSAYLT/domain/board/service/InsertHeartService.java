@@ -33,7 +33,7 @@ import org.springframework.transaction.annotation.Transactional;
         Board board = boardRepository.findById(boardId)
                 .orElseThrow(() -> new BoardNotFoundException("게시글이 존재하지 않습니다"));
 
-        if(heartRepository.existsHeartByUserAndBoard(user,board)){
+        if(heartRepository.existsByUserAndBoard(user,board)){
             throw new AlreadyInsertHeartException("이미 좋아요를 누르셨습니다.");
         }
         Heart heart = Heart.builder()
