@@ -20,7 +20,7 @@ public class LogoutService {
     private final BlackListRepository blackListRepository;
     private final RefreshTokenRepository refreshTokenRepository;
     private final UserUtil userUtil;
-    private TokenProvider tokenProvider;
+    private final TokenProvider tokenProvider;
 
 
     @Transactional
