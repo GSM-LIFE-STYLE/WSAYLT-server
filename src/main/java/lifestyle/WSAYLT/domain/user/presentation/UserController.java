@@ -26,7 +26,7 @@ public class UserController {
 
     @DeleteMapping
     public ResponseEntity<Void> deleteUser(@RequestBody @Valid DeleteUserRequest deleteUserRequest) {
-        deleteUserService.withdrawUser(deleteUserRequest);
+        deleteUserService.withdraw(deleteUserRequest);
         return new ResponseEntity<>(HttpStatus.NO_CONTENT);
     }
 }
